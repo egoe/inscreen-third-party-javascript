@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+<iframe src='http://localhost:9000/' id="guestFrame1" width='1200px' height='640px'  style='z-index:999999;margin: auto;position: absolute;top:0;bottom:0; left:0;right:0;-webkit-transform:scale(0.5);-moz-transform-scale(0.5);' >
+
+</iframe>
+
+<br/>
+<button class="btn" type="button" data-btn="Play">Play</button>
+<button class="btn" type="button" data-btn="Pause">Pause</button>
+<button class="btn" type="button" data-btn="Duration">Duration</button>
+<button class="btn" type="button" data-btn="CurrentTime">Current Time</button>
+<button class="btn" type="button" data-btn="Provider">Provider</button>
+<button class="btn" type="button" data-btn="EmbedUrl">Embed Url</button>
+<button class="btn" type="button" data-btn="DirectUrl">Direct Url</button>
+<button class="btn" type="button" data-btn="VideoId">Video Id</button>
+<button class="btn" type="button" data-btn="VideoTitle">Video Title</button>
+<br/>
+<textarea id="res"></textarea>
+<script type="text/javascript">
+  $( document ).ready(function() {
+
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+    // Listen to message from child window
+    eventer(messageEvent,function(e) {
+        var result ;
+        if(e.data.duration){
+          result = e.data.duration;
+          console.log('duration',e.data.duration);
+        }
+        else if(e.data.CurrentTime){
+          result = e.data.CurrentTime;
+         console.log('CurrentTime',e.data.CurrentTime); 
+        }
+        else if(e.data.Provider){
+          result = e.data.Provider;
+         console.log('Provider',e.data.Provider); 
+        }
+        else if(e.data.VideoId){
+          result = e.data.VideoId;
+         console.log('VideoId',e.data.VideoId); 
+        }
+        else if(e.data.VideoTitle){
+          result = e.data.VideoTitle;
+         console.log('VideoTitle',e.data.VideoTitle); 
+        }
+        else if(e.data.DirectUrl){
+          result = e.data.DirectUrl;
+         console.log('DirectUrl',e.data.DirectUrl); 
+        }
+        else if(e.data.EmbedUrl){
+          result = e.data.EmbedUrl;
+         console.log('EmbedUrl',e.data.EmbedUrl); 
+        }
+        $('#res').val(result);
+    },false);
+
+    var iframe = document.getElementById('guestFrame1').contentWindow;
+    $('.btn').on('click',function(){
+      var type = $(this).attr('data-btn');
+      var message = {};
+      message.type = type;
+      console.log(message);
+      console.log('blog.local:  sending message:  ' + message);
+      iframe.postMessage(message,'http://localhost:9000/');
+      /*if(type == "Duration"){
+        message.type = type;
+        console.log(message);
+        console.log('blog.local:  sending message:  ' + message);
+        iframe.postMessage(message,'http://localhost:9000/');
+      }
+      else if(type == "play"){
+
+      }*/
+    })
+  });
+
+</script>
+</body>
+</html>
