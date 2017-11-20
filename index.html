@@ -20,12 +20,14 @@
 <button class="btn play" type="button" data-btn="Play">Play</button>
 <button class="btn pause" type="button" data-btn="Pause">Pause</button>
 <button class="btn duration" type="button" data-btn="Duration">Duration</button>
-<button class="btn" type="button" data-btn="CurrentTime">Current Time</button>
-<button class="btn" type="button" data-btn="Provider">Provider</button>
-<button class="btn" type="button" data-btn="EmbedUrl">Embed Url</button>
-<button class="btn" type="button" data-btn="DirectUrl">Direct Url</button>
-<button class="btn" type="button" data-btn="VideoId">Video Id</button>
-<button class="btn" type="button" data-btn="VideoTitle">Video Title</button>
+<button class="btn CurrentTime" type="button" data-btn="CurrentTime">Current Time</button>
+<button class="btn Provider" type="button" data-btn="Provider">Provider</button>
+<button class="btn EmbedUrl" type="button" data-btn="EmbedUrl">Embed Url</button>
+<button class="btn DirectUrl" type="button" data-btn="DirectUrl">Direct Url</button>
+<button class="btn VideoId" type="button" data-btn="VideoId">Video Id</button>
+<button class="btn VideoTitle" type="button" data-btn="VideoTitle">Video Title</button>
+<button class="btn mute" type="button" data-btn="mute">mute</button>
+<button class="btn unmute" type="button" data-btn="unmute">mute</button>
 <br/>
 <textarea id="res"></textarea>
 <script type="text/javascript">
@@ -39,13 +41,36 @@
       $('.play').on('click',function(){
       inscreen.play();
 
-      })    
+      })
+    $('.VideoTitle').on('click',function(){
+      inscreen.VideoTitle();
+    })
+    $('.VideoId').on('click',function(){
+      inscreen.VideoId();
+    })
+    $('.EmbedUrl').on('click',function(){
+      inscreen.EmbedUrl();
+    })
+    $('.Provider').on('click',function(){
+      inscreen.Provider();
+    })  
+    $('.btn').on('click',function(){
+      console.log(res);
+    })   
     $('.pause').on('click',function(){
       inscreen.pause();
     })
     $('.duration').on('click',function(){
-      var b = inscreen.Duration();
-      console.log(b);
+      inscreen.Duration();
+    })
+    $('.mute').on('click',function(){
+      inscreen.mute();
+    })
+    $('.CurrentTime').on('click',function(){
+      inscreen.CurrentTime();
+    })
+    $('.unmute').on('click',function(){
+      inscreen.mute();
     })
     
   });
