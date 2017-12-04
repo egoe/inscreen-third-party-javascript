@@ -19,6 +19,18 @@ inscreen.mute();
 ## Unmute function
 inscreen.unmute();
 
+## next function
+inscreen.next();
+
+## prev function
+inscreen.prev();
+
+## program function
+inscreen.program();
+
+## live function
+inscreen.live();
+
 ## get Current time (the returned value will be stocked in object called res)
 inscreen.CurrentTime();
 
