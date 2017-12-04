@@ -28,13 +28,18 @@
 <button class="btn VideoTitle" type="button" data-btn="VideoTitle">Video Title</button>
 <button class="btn mute" type="button" data-btn="mute">mute</button>
 <button class="btn unmute" type="button" data-btn="unmute">mute</button>
+<button class="btn next" type="button" data-btn="next">next</button>
+<button class="btn prev" type="button" data-btn="prev">previous</button>
+<button class="btn program" type="button" data-btn="program">program</button>
+<button class="btn live" type="button" data-btn="live">live</button>
+
 <br/>
 <textarea id="res"></textarea>
 <script type="text/javascript">
   
 
 </script>
-    <script type="text/javascript"  src="inscreenSdk.js"></script>
+    <script type="text/javascript"  src="src/inscreenSdk-unmin.js"></script>
     <script type="text/javascript">
       inscreen.initPlayer('guestFrame1');
       $( document ).ready(function() {
@@ -71,6 +76,18 @@
     })
     $('.unmute').on('click',function(){
       inscreen.mute();
+    })
+    $('.prev').on('click',function(){
+      inscreen.prev();
+    })
+    $('.next').on('click',function(){
+      inscreen.next();
+    })
+    $('.program').on('click',function(){
+      inscreen.program();
+    })
+    $('.live').on('click',function(){
+      inscreen.live();
     })
     
   });

@@ -58,6 +58,26 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
       	message.type = "Unmute";
       	iframe.postMessage(message,src);
     },
+    next: function(address){
+      var message = {};
+        message.type = "Next";
+        iframe.postMessage(message,src);
+    },
+    prev: function(address){
+      var message = {};
+        message.type = "Prev";
+        iframe.postMessage(message,src);
+    },
+    program: function(address){
+      var message = {};
+        message.type = "Program";
+        iframe.postMessage(message,src);
+    },
+    live: function(address){
+      var message = {};
+        message.type = "Live";
+        iframe.postMessage(message,src);
+    },
     Duration: function(){
     	var message = {};
       	message.type = "Duration";
